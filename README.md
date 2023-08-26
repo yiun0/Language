@@ -396,7 +396,7 @@ Main의 밑줄에서 Add unimplements methods 선택해 구현이 안된 함수 
         //
       }
 
-Main 메소드 안에서 다른 메소드를 불러오기 위해서 해당 메소드도 Main과 동일하게 static으로 선언되어야함
+Main 메소드 안에서 다른 메소드를 불러오기 위해서 해당 메소드도 Main과 동일하게 static으로 선언되어야함   
 Main 클래스 활용해 인스턴스 생성, 인스턴스에서 함수 사용
 
       Main main = new Main();
