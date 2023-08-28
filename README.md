@@ -50,8 +50,8 @@ final: 상수
 ### 3.3 오버플로우
 int의 범위는 무한대가 아님   
 -21억부터 +21억까지의 순환되는 범위를 가지고 있음
-
 - - -
+
 ## 4 자료형
 
 ### 4.1 자료형 종류
@@ -404,6 +404,133 @@ Main 클래스 활용해 인스턴스 생성, 인스턴스에서 함수 사용
       main.pause();
       main.stop();
       
+- - -
+
+## 13 최종
+최종(final): 절대 변하지 않는 특정한 것을 정하고 싶을 때 사용
+
+    final int number = 10;
+    number = 5;
+    //오류 발생: number 변수값 바뀔 수 없음
+
+상속 받은 함수를 main 클래스에서 재정의해 사용할 수 있음   
+부모 클래스에서 함수를 정의할 때 최종을 붙인 경우:
+
+    public final void show() {
+    }
+
+main 클래스에서 show() 함수 재정의 불가해짐
+
+클래스를 final로 정의하는 경우:
+    
+    final class Parent {
+    }
+
+Parent 클래스는 다른 클래스에서 상속을 받을 수 없게됨
+
+- - -
+
+## 14 인터페이스
+- 추상 클래스와 흡사한 개념
+  + 추상화의 정도가 높음
+  + 요구되는 설계의 기준이 더 높음
+- 추상 클래스는 추상 메소드 외에 멤버 변수나 일반 메소드를 가질 수 있지만 인터페이스에서는 반드시 사전에 정의된 추상 메소드와 상수만을 가질 수 있음
+
+      public interface Dog {
+        public void show() {}
+        //인터페이스 안에서 함수 구현 불가 > 오류 발생
+        public void show();
+        //함수가 존재한다는 부분만 설계
+      }
+
+인터페이스를 main 메소드에서 사용할 때:
+
+    public class Main implements Dog {
+    }
+
+인터페이스의 경우 하나의 클래스에서 여러 개의 인터페이스를 다중으로 상속 받을 수 있음   
+*추상 클래스의 경우에서는 불가
+- - -
+
+## 15 다형성
+다양한 형태의 성질을 가진다는 의미
+
+    public class Fruit {
+      //fruit의 정보 변수 설정
+      //fruit의 정보 출력하는 show() 함수 작성    
+    }
+
+Fruit를 상속 받는 클래스 Peach 생성
+
+    public class Peach extends Fruit {
+      //fruit에서 설정한 변수에 대한 peach의 정보 정의
+    }
+
+Main클래스에서 Peach 사용 시
+
+부모 클래스의 변수로서 자식 클래스의 인스턴스를 사용 가능
+
+    public class Main {
+      public static void main(String[] args) {
+        Fruit fruit = new Peach();
+        fruit.show();
+      }
+    }
+
+- - -
+
+## 16 객체
+객체(object) 클래스는 모든 객체의 조상으로써 쓰임   
+자바의 모든 클래스는 Object 클래스를 상속 받음   
+모든 클래스가 공통적으로 포함하고 있는 기능을 제공
+
+    public class Archer {
+      String name;
+      String power;
+    
+      public Archer(String name, String power) {
+        this.name = name;
+        this.power = power;
+      }
+    
+      public boolean equals(Object obj) {
+        Archer temp = (Archer) obj;
+        //Object가 Archer의 부모 클래스이기 때문에 Object의 변수를 Archer 형태로 바꿀 수 있음
+        if (name == temp.name && power == temp.power) {
+          return true;
+        }
+        else {
+          return false;
+        }
+
+    }
+
+equals(Object obj) 함수를 Main 클래스에서 사용하는 경우
+
+    Archer archer1 = new Archer("1번", "상");
+    Archer archer2 = new Archer("1번", "상");
+
+    System.out.println(archer1 == archer2);
+    //false 출력: 두 인스턴스가 같은지 판단
+    System.out.println(archer1.equals(archer2));
+    //true 출력: 두 인스턴스가 내부적으로 가지는 값이 같은지 판단
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
