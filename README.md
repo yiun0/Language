@@ -1,51 +1,94 @@
-# Java
+출처: https://www.youtube.com/watch?v=wjLwmWyItWI&list=PLRx0vPvlEmdBjfCADjCc41aD4G0bmdl4R, 이것이 자바다 (저자 신용권, 임경균)
+
 ## 1 Intro
-- JSP, 안드로이드에 사용   
-- 운영체제 가리지 않고 실행   
-- 객체 지향 프로그래밍 언어   
+### 1.1 프로그래밍 언어
+고급언어: 컴퓨터와 대화할 수 있도록 만든 언어 중 사람이 쉽게 이해할 수 있는 언어, 컴파일 과정을 통해 기계어로 변환
+저급언어: 기게어에 가까운 언어, 대표적으로 어셈블리어가 속함
+
+### 1.2 Java
+- JSP, 안드로이드에 사용
+- 모든 운영체제에서 실행 가능
+- 객체 지향 프로그래밍 언어
+- 메모리 자동 정리
+- 무료 오픈 소스 라이브러리 풍부
+
+### 1.3 코드 용어 이해
+- 패키지
+  >     package ch01.sec09;
+  > 소스 파일 위치: src/ch01/sec09
+- 클래스
+  >     public class Hello {}
+  > 클래스명/소스파일명: Hello
+- 메소드
+  >     public static void main(String[] args) {}
+  > 메소드명: main
+
 - - -
 
-## 2 Print
-### 2.1 기본
+## 2 기본 입출력
+### 2.1 출력
 
 - 줄바꿈o
-  
-        System.out.println("");
+  >     System.out.println("");
 
 - 줄바꿈x
- 
-        System.out.print("");
+  >     System.out.print("");
 
 
-### 2.2 다양한 자료형
+- 다양한 자료형
+  >     System.out.println("" + int);
+  > 두 자료형 사이에 + 사용
 
-    System.out.println("" + int);
+### 2.2 입력
 
-두 자료형 사이에 + 사용
+- int
+  >     Scanner scan = new Scanner(System.in);
+  >     int i = scan.nextInt();
+  >     scan.close();
+
+- String
+  >     Scanner scan = new Scanner(System.in);
+  >     String j = scan.next();
+  >     scan.close();
+
+*다른 자료형의 경우 nextDouble() 등과 같이 자료형명 붙여 작성
+
+### 2.3 파일 입출력
+    File file = new File("input.txt");
+    
+    //오류 발생 대비 try catch문으로 만들기
+    try {
+      Scanner scan = new Scanner(file);
+      while(scan.hasNextInt())
+      {
+        System.out.println(scan.nextInt() * 100);
+      }
+      scan.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("파일을 읽어오는 도중 오류가 발생했습니다")
+    }
+
 - - -   
 
 ## 3 변수
-변수: 프로그램이 실행되는 동안 저장된 값이 변경될 수 있는 공간
-상수: 한 번 정해지면 값이 변경될 필요가 없는 데이터
+- 변수
+    + 하나의 값을 저장할 수 있는 메모리 번지에 붙여진 이름   
+    + 프로그램이 실행되는 동안 저장된 값이 변경될 수 있는 공간   
+- 상수: 한 번 정해지면 값이 변경될 필요가 없는 데이터
 
 ### 3.1 변수 선언
 - 정수: int
-
-      int integer = 100;
+  >     int integer = 100;
   
 - 실수: double
-  
-      double real = 100.5;
+  >     double real = 100.5;
   
 - 문자: String
-
-      String string = "word";
+  >     String string = "word";
 
 ### 3.2 상수 선언
-
-    final static int PI = 3.14
-    
-final: 상수   
+>     final static int PI = 3.14
+> final: 상수   
 
 ### 3.3 오버플로우
 int의 범위는 무한대가 아님   
@@ -56,24 +99,23 @@ int의 범위는 무한대가 아님
 
 ### 4.1 자료형 종류
 - 정수
-  + short: 2 byte
-  + int: 4 byte
+  + byte: 1 byte: -128~127
+  + short: 2 byte: -32768~32767
+  + char: 2 byte
+  + int: 4 byte: 
   + long: 8 byte
 - 실수
   + float: 4 byte
   + double: 8 byte
 - string
-- char
 - boolean    
 
 #### 4.1.1 int의 활용
-8진수로 변환
+- 8진수로 변환
+  >     System.out.format("8진수 %o", int);
 
-    System.out.format("8진수 %o", int);
-
-16진수로 변환
-
-    System.out.format("16진수 %x", int);
+- 16진수로 변환
+  >     System.out.format("16진수 %x", int);
 
 #### 4.1.2 char의 활용
 ASCII 코드 기반으로 활용됨
@@ -178,38 +220,6 @@ a = 3^20
 ### 7.1 무한루프
 for( ; ; )   
 break; 사용해서 루프 종료
-- - -
-
-## 8 기본 입출력
-
-- int
-
-      Scanner scan = new Scanner(System.in);
-      int i = scan.nextInt();
-      scan.close();
-
-- String
-  
-      Scanner scan = new Scanner(System.in);
-      String j = scan.next();
-      scan.close();
-
-*다른 자료형의 경우 nextDouble() 등과 같이 자료형명 붙여 작성
-
-### 8.1 파일 입출력
-    File file = new File("input.txt");
-    
-    //오류 발생 대비 try catch문으로 만들기
-    try {
-      Scanner scan = new Scanner(file);
-      while(scan.hasNextInt())
-      {
-        System.out.println(scan.nextInt() * 100);
-      }
-      scan.close();
-    } catch (FileNotFoundException e) {
-      System.out.println("파일을 읽어오는 도중 오류가 발생했습니다")
-    }
 
 - - -
 
