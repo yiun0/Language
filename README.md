@@ -143,13 +143,11 @@ substring을 사용해 string의 각 char를 array 형식으로 쪼갤 수 있�
 
 ## 4.2 자료형 변환
 
-    int integer = (int) real
-    
-  실수 real의 소숫점 아래를 버림하여 정수 integer로 변환
+>     int integer = (int) real   
+>  실수 real의 소숫점 아래를 버림하여 정수 integer로 변환
 
-    String j = i + ""
-
-  정수 i를 문자열 j로 변환
+>     String j = i + ""
+>  정수 i를 문자열 j로 변환
 
 ### 4.2.1 자동 타입 변환
 
@@ -185,12 +183,12 @@ substring을 사용해 string의 각 char를 array 형식으로 쪼갤 수 있�
 + !(조건): 조건이 만족되지 않는 경우 참 반환
 
 ## 5.4 삼항 연산자
-    int result = (a > b) ? a : b;
-(조건) ? 참 반환값 : 거짓 반환값 꼴로 작성
+>     int result = (a > b) ? a : b;
+> (조건) ? 참 반환값 : 거짓 반환값 꼴로 작성
 
 ## 5.5 pow() 함수의 활용
-    double a = Math.pow(3.0, 20.0)
-a = 3^20
+>     double a = Math.pow(3.0, 20.0)
+> a = 3^20
 - - -
 
 # 6 조건문
@@ -228,11 +226,11 @@ a = 3^20
       }
           
 - for   
-  for(변수 초기화; 조건; 연산) 꼴로 작성
 
-      for(int i = 30; i > 0; i--){
-        //i > 0인 동안 실행
-      }
+  >      for(int i = 30; i > 0; i--){
+  >        //i > 0인 동안 실행
+  >      }
+  >  for(변수 초기화; 조건; 연산) 꼴로 작성
 
 ## 7.1 무한루프
 for( ; ; )   
@@ -307,44 +305,35 @@ Node: 점의 좌표를 나타냄
 
 Node라는 class 아래에 private variable x, y 생성   
 *private: 외부에서 한 번에 접근할 수 없는 변수
+>     public class Node {
+>       private int x;
+>       private int y;
 
-    public class Node {
-      private int x;
-      private int y;
-
-
-고로 외부에서 x값에 접근할 수 있도록 하는 함수를 따로 만들어줘야함
-  
-      public int getX() {
-        return x;
-      }
+고로 외부에서 x값에 접근할 수 있도록 하는 함수를 따로 만들어줘야함  
+>       public int getX() {
+>         return x;
+>       }
 
 x값을 설정할 수 있도록 하는 함수도 생성   
-갖고 있던 변수 this.x를 매개변수로 받은 x의 값으로 바꿔줌  
-
-      public void setX(int x) {
-        this.x = x;
-      }      
-
-*y도 동일하게 작성   
-*우클릭> Source> Generate Getters and Setters 이용해 자동 생성
+갖고 있던 변수 this.x를 매개변수로 받은 x의 값으로 바꿔줌
+>       public void setX(int x) {
+>         this.x = x;
+>       }      
+> *y도 동일하게 작성   
+> *우클릭> Source> Generate Getters and Setters 이용해 자동 생성
 
 생성자: 객체를 만들어줄 때 자동으로 값을 초기화 해주는 함수   
 클래스와 동일한 이름을 가짐   
-
-
-      public Node(int x, int y) {
-        this.x = x;
-        this.y = y;
-      }
-
-*우클릭> Source> Generate Constructor using Fields 이용해 자동 생성
+>       public Node(int x, int y) {
+>         this.x = x;
+>         this.y = y;
+>       }
+> *우클릭> Source> Generate Constructor using Fields 이용해 자동 생성
 
 다른 Node의 좌표를 받아 현재 Node와의 정중앙의 좌표를 반환
-
-      public Node getCenter(Node other) {
-        return new Node((this.x + other.getX()) / 2, (this.y + other.getY()) / 2)
-      }
+>       public Node getCenter(Node other) {
+>         return new Node((this.x + other.getX()) / 2, (this.y + other.getY()) / 2)
+>       }
 
 ## 11.1 상속
 다른 클래스가 가지고 있는 정보를 받는 것   
@@ -358,36 +347,30 @@ x값을 설정할 수 있도록 하는 함수도 생성
     }
 
 Person 클래스를 상속 받아 사용하는 Student 클래스
-
-    public class Student extends Person {
-      private String studentID;
-      private int grade;
-      //getter & setter 생성
+>     public class Student extends Person {
+>       private String studentID;
+>       private int grade;
+>       //getter & setter 생성
 
 Student 클래스에서 생성자 자동 생성 시
-
-      public Student(String name, int age, String studentID, int grade) {
-        super(name,age);
-        this.studentID = studentID;
-        this.grade = grade;
-      }
-
-super: 부모가 가진 생성자 실행
+>       public Student(String name, int age, String studentID, int grade) {
+>         super(name,age);
+>         this.studentID = studentID;
+>         this.grade = grade;
+>       }
+> *super: 부모가 가진 생성자 실행
 
 Student 클래스에 변수값을 출력하는 함수 show() 생성
-
-    public void show() {
-      System.out.println("이름: "+getName());
-      //다른 변수로도 동일하게 작성성
-    }
-
+>     public void show() {
+>       System.out.println("이름: "+getName());
+>       //다른 변수로도 동일하게 작성성
+>     }
 
 Main 클래스에서 Student 클래스의 정보를 불러올 시
-
-    public static void main(String[] args) {
-      Student student = new Student("name", age, "student ID", grade);
-      student.show();
-    }
+>     public static void main(String[] args) {
+>       Student student = new Student("name", age, "student ID", grade);
+>       student.show();
+>     }
 
 - - -
 
@@ -400,36 +383,32 @@ Main 클래스에서 Student 클래스의 정보를 불러올 시
 Override로 구현해야 할 함수를 알려줘 설계적인 측면에서 도움이 됨
 
 추상 클래스 정의
-
-    abstract class Player {
-      abstract void play(String songName);
-      abstract void pause();
-      abstract void stop();
-    }
+>     abstract class Player {
+>       abstract void play(String songName);
+>       abstract void pause();
+>       abstract void stop();
+>     }
 
 Main 클래스에서 Player 클래스를 상속 받도록 함
-
-    public class Main extends Player {
+>     public class Main extends Player {
 
 Main의 밑줄에서 Add unimplements methods 선택해 구현이 안된 함수 추가
-
-      void play(String songName) {
-        //각 함수에서 실행시킬 내용 구현
-      }
-      void pause() {
-        //
-      }
-      void stop () {
-        //
-      }
+>       void play(String songName) {
+>         //각 함수에서 실행시킬 내용 구현
+>       }
+>       void pause() {
+>         //
+>       }
+>       void stop () {
+>         //
+>       }
 
 Main 메소드 안에서 다른 메소드를 불러오기 위해서 해당 메소드도 Main과 동일하게 static으로 선언되어야함   
 Main 클래스 활용해 인스턴스 생성, 인스턴스에서 함수 사용
-
-      Main main = new Main();
-      main.play("songName");
-      main.pause();
-      main.stop();
+>       Main main = new Main();
+>       main.play("songName");
+>       main.pause();
+>       main.stop();
       
 - - -
 
@@ -442,18 +421,14 @@ Main 클래스 활용해 인스턴스 생성, 인스턴스에서 함수 사용
 
 상속 받은 함수를 main 클래스에서 재정의해 사용할 수 있음   
 부모 클래스에서 함수를 정의할 때 최종을 붙인 경우:
-
-    public final void show() {
-    }
-
-main 클래스에서 show() 함수 재정의 불가해짐
+>     public final void show() {
+>     }
+> main 클래스에서 show() 함수 재정의 불가해짐
 
 클래스를 final로 정의하는 경우:
-    
-    final class Parent {
-    }
-
-Parent 클래스는 다른 클래스에서 상속을 받을 수 없게됨
+>     final class Parent {
+>     }
+> Parent 클래스는 다른 클래스에서 상속을 받을 수 없게됨
 
 - - -
 
@@ -471,9 +446,8 @@ Parent 클래스는 다른 클래스에서 상속을 받을 수 없게됨
       }
 
 인터페이스를 main 메소드에서 사용할 때:
-
-    public class Main implements Dog {
-    }
+>     public class Main implements Dog {
+>     }
 
 인터페이스의 경우 하나의 클래스에서 여러 개의 인터페이스를 다중으로 상속 받을 수 있음   
 *추상 클래스의 경우에서는 불가
@@ -488,21 +462,17 @@ Parent 클래스는 다른 클래스에서 상속을 받을 수 없게됨
     }
 
 Fruit를 상속 받는 클래스 Peach 생성
+>     public class Peach extends Fruit {
+>       //fruit에서 설정한 변수에 대한 peach의 정보 정의
+>     }
 
-    public class Peach extends Fruit {
-      //fruit에서 설정한 변수에 대한 peach의 정보 정의
-    }
-
-Main클래스에서 Peach 사용 시
-
-부모 클래스의 변수로서 자식 클래스의 인스턴스를 사용 가능
-
-    public class Main {
-      public static void main(String[] args) {
-        Fruit fruit = new Peach();
-        fruit.show();
-      }
-    }
+Main클래스에서 Peach 사용 시, 부모 클래스의 변수로서 자식 클래스의 인스턴스를 사용 가능
+>     public class Main {
+>       public static void main(String[] args) {
+>         Fruit fruit = new Peach();
+>         fruit.show();
+>       }
+>     }
 
 - - -
 
